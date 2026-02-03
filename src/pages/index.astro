@@ -1,17 +1,66 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { site } from '../data/site';
+import { getCollection } from 'astro:content';
 
+const projects = await getCollection('projects');
+const featured = projects.filter((project) => project.data.featured).slice(0, 2);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Home" description={site.description}>
+  <section class="section">
+    <div class="container hero">
+      <div>
+        <p class="eyebrow reveal">Portfolio + Blog</p>
+        <h1 class="display reveal delay-1" style="font-size: clamp(2rem, 4vw, 3rem);">
+          Applied math + AI, built with a retro signal.
+        </h1>
+        <p class="muted reveal delay-2">
+          I build rigorous, human-centered systems at the intersection of mathematical modeling and modern AI.
+          This space documents projects, experiments, and long-form thinking.
+        </p>
+        <div class="meta reveal delay-3" style="margin-top: 24px;">
+          <a class="button" href="/projects">View Projects</a>
+          <a class="button secondary" href="/contact">Contact</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal delay-2">
+        <span>Signal map online</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2 class="display" style="font-size: 1.1rem;">Featured Work</h2>
+        <div class="line"></div>
+      </div>
+      <div class="grid two">
+        {featured.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container card">
+      <div class="grid two">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h3 class="display" style="font-size: 1rem;">Let’s build something precise.</h3>
+          <p class="muted">
+            Reach out for collaboration, research conversations, or opportunities in applied math.
+          </p>
+        </div>
+        <div class="meta" style="align-items: center;">
+          <a class="button" href={`mailto:${site.social.email}`}>Email</a>
+          <a class="button secondary" href={site.social.github}>GitHub</a>
+          <a class="button secondary" href={site.social.linkedin}>LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

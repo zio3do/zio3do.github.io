@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout title="Contact" description="Connect for collaboration or applied math roles.">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1 class="display" style="font-size: clamp(2rem, 4vw, 2.6rem);">Say hello.</h1>
+      <p class="muted">
+        Interested in applied math, AI research, or rigorous product work? I’m open to conversations and
+        collaborations.
+      </p>
+      <div class="card" style="margin-top: 32px;">
+        <div class="meta">
+          <a class="button" href={`mailto:${site.social.email}`}>{site.social.email}</a>
+          <a class="button secondary" href={site.social.github}>GitHub</a>
+          <a class="button secondary" href={site.social.linkedin}>LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

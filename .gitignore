@@ -12,6 +12,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# documentation
+building_instructions.md
+zuzu_fdbk.md
+
 
 # environment variables
 .env

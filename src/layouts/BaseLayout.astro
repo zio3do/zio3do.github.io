@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+import SkipLink from '../components/SkipLink.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+import { site } from '../data/site';
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <SEO title={title} description={description} />
+  </head>
+  <body>
+    <SkipLink />
+    <header class="site-header">
+      <div class="container nav-inner">
+        <a class="brand" href="/">{site.name}</a>
+        <Nav />
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

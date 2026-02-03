@@ -1,0 +1,19 @@
+---
+const { project } = Astro.props;
+---
+
+<article class="card">
+  <div class="pill">Project</div>
+  <h3 style="margin-top: 16px;">{project.data.title}</h3>
+  <p class="muted">{project.data.description}</p>
+  <div class="tag-list">
+    {project.data.tech.map((tech) => (
+      <span class="pill">{tech}</span>
+    ))}
+  </div>
+  <div class="meta" style="margin-top: 16px;">
+    {project.data.demo && <a href={project.data.demo}>Live demo</a>}
+    {project.data.repo && <a href={project.data.repo}>GitHub</a>}
+    <a href={`/projects/${project.slug}`}>Details</a>
+  </div>
+</article>

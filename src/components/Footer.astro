@@ -1,0 +1,23 @@
+---
+import { site } from '../data/site';
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="grid two">
+      <div>
+        <p class="display" style="font-size: 0.9rem;">{site.name}</p>
+        <p class="muted">Retro-minded portfolio and writing hub for applied math + AI.</p>
+      </div>
+      <div>
+        <p class="eyebrow">Contact</p>
+        <div class="meta">
+          <a href={`mailto:${site.social.email}`}>{site.social.email}</a>
+          <a href={site.social.github}>GitHub</a>
+          <a href={site.social.linkedin}>LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top: 24px;">© {new Date().getFullYear()} {site.name}. Built with Astro.</p>
+  </div>
+</footer>

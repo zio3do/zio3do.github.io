@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+---
+
+<BaseLayout title="Projects" description="Selected applied math and AI projects.">
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Projects</p>
+      <h1 class="display" style="font-size: clamp(2rem, 4vw, 2.6rem);">Portfolio signals</h1>
+      <p class="muted">A selection of work exploring modeling, verification, and intelligent systems.</p>
+      <div class="grid three" style="margin-top: 32px;">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

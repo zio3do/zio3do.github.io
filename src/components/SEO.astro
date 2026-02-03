@@ -1,0 +1,20 @@
+---
+import { site } from '../data/site';
+
+const { title, description, canonical } = Astro.props;
+const pageTitle = title ? `${title} | ${site.title}` : site.title;
+const pageDescription = description ?? site.description;
+const canonicalUrl = canonical ?? site.url;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content={pageDescription} />
+<meta name="generator" content={Astro.generator} />
+{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+<title>{pageTitle}</title>
+
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={pageDescription} />
+{canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+<meta property="og:type" content="website" />
